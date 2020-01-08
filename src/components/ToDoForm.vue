@@ -1,7 +1,11 @@
 <template>
     <form @submit.prevent="emitTask">
-        <input type="text" placeholder="Enter task..." v-model="task">
-        <button type="submit">{{ buttonText }}</button>
+        <input type="text"
+               placeholder="Enter task..."
+               v-model="task">
+        <button type="submit">
+            {{ buttonText }}
+        </button>
     </form>
 </template>
 

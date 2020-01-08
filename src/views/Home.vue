@@ -15,6 +15,5 @@ import ToDo from '@/components/ToDo.vue';
     ToDo,
   },
 })
-
 export default class Home extends Vue {}
 </script>
