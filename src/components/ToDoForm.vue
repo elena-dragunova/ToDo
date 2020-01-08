@@ -15,7 +15,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 @Component
 export default class ToDoForm extends Vue {
 
-    @Prop({ type: String, default: 'Add task' }) readonly buttonText!: string;
+    @Prop({ type: String, default: 'Add task' }) public readonly buttonText!: string;
 
     public task: string = '';
 

@@ -11,7 +11,7 @@ import Task from '@/types/Task';
 
 @Component
 export default class TaskItem extends Vue {
-    @Prop(Object) taskItem!: Task;
+    @Prop(Object) public taskItem!: Task;
 
     public emitCheck(): void {
         this.$emit('completedChanged');
