@@ -32,11 +32,15 @@ export default class ToDo extends Vue {
     };
 
     public completedChanged(task: Task): void {
-        const ind = this.tasks.findIndex(item => {
-            return item.description === task.description;
-        });
+        const ind = this.findIndex(task);
         this.tasks[ind].completed = !this.tasks[ind].completed;
     };
+
+    private findIndex(task: Task): number {
+        return this.tasks.findIndex(item => {
+            return item.description === task.description;
+        });
+    }
 }
 </script>
 
