@@ -4,10 +4,10 @@
         <ToDoForm button-text="Create task"
                   @taskAdded="addTask"/>
         <ul class="tasks-list">
-            <TaskItem v-for="task in tasks"
+            <TaskItem v-for="task in getTasks"
                       :key="task.description"
                       :taskItem="task"
-                      @completedChanged="completedChanged(task)"/>
+                      @completedChanged="completeTask(task)"/>
         </ul>
     </div>
 </template>
@@ -17,6 +17,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import ToDoForm from '@/components/ToDoForm.vue';
 import TaskItem from '@/components/TaskItem.vue';
 import Task from '@/types/Task.ts';
+import { Action, Getter } from 'vuex-class';
 
 @Component({
     components: {
@@ -25,20 +26,9 @@ import Task from '@/types/Task.ts';
     },
 })
 export default class ToDo extends Vue {
-    public tasks: Task[] = [];
-
-    public addTask(description: string): void {
-        this.tasks.push({ description, completed: false });
-    }
-
-    public completedChanged(task: Task): void {
-        const ind = this.findIndex(task);
-        this.tasks[ind].completed = !this.tasks[ind].completed;
-    }
-
-    private findIndex(task: Task): number {
-        return this.tasks.findIndex((item) => item.description === task.description);
-    }
+    @Action public addTask!: void;
+    @Action public completeTask!: void;
+    @Getter public getTasks!: Task[];
 }
 </script>
 
